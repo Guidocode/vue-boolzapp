@@ -26,37 +26,93 @@
     <div class="container clearfix">
 
       <!-- Content left -->
-      <div class="col-left debug">
+      <div class="col-left">
 
-        <div class="left-top debug h50"></div>
+        <div class="left-top h50 flex-between-items-center">
 
-        <div class="left-notifications debug h70"></div>
+          <!-- Il mio profilo -->
+          <div class="myprofile">
+            <div class="container-circle-photo">
+              <img src="./img/avatar_io.jpg" alt="">
+            </div>
+            <span>Sofia</span>
+          </div>
+          <!-- /Il mio profilo -->
 
-        <div class="input-container debug">
-          <button>cerca</button>
+          <!-- Icone -->
+          <div class="icons">
+            <i class="fa-solid fa-circle-notch"></i>
+            <i class="fa-solid fa-message"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+          <!-- /Icone -->
+
+        </div>
+
+        <div class="left-notifications h60">
+          <div class="container-circle-photo">
+            <i class="fa-solid fa-bell-slash"></i>
+          </div>
+          <p>Ricevi notifiche di nuovi messaggi <br> <span>Attiva notifiche desktop</span></p>
+          
+        </div>
+
+        <div class="input-container">
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
           <input type="text" value="" placeholder="Cerca o inizia una nuova chat">
         </div>
 
+        <!-- Utenti -->
         <div class="users">
           <ul>
-            <li class="debug h50">user</li>
-            <li class="debug h50">user</li>
-            <li class="debug h50">user</li>
-            <li class="debug h50">user</li>
-           
+
+            <li class="flex-between-items-center h50">
+              <div class="user">
+                <div class="container-circle-photo">
+                  <img src="./img/avatar_1.jpg" alt="">
+                </div>
+                <div class="text">
+                  <span>Michele</span><br>
+                  <span class="last-message">Ultimo messaggio inviato</span>
+                </div>
+              </div>
+              <span class="clock">12:00</span>
+            </li>
+
           </ul>
         </div>
+        <!-- /Utenti -->
 
       </div>
       <!-- /Content left -->
 
 
       <!-- Content right -->
-      <div class="col-right debug">
+      <div class="col-right">
 
-        <div class="right-top debug h50"></div>
+        <div class="right-top h50 flex-between-items-center">
 
-        <div class="right-bottom debug h50"></div>
+          <!-- utente messaggiato -->
+          <div class="user-messaged">
+            <div class="container-circle-photo">
+              <img src="./img/avatar_1.jpg" alt="">
+            </div>
+            <span>Michele</span>
+          </div>
+          <!-- /utente messaggiato -->
+
+          <div class="icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-message"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+
+        <div class="right-bottom h60 flex-between-items-center">
+          <i class="fa-solid fa-face-smile"></i>
+          <input type="text" placeholder="Scrivi un mesaggio">
+          <i class="fa-solid fa-microphone"></i>
+        </div>
 
       </div>
       <!-- /Content right -->
