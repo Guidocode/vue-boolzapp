@@ -72,7 +72,7 @@
         <div class="contacts">
           <ul>
 
-            <li v-for="(contact, index) in contacts" class="flex-between-items-center h50">
+            <li @click="activeContact(index)" v-for="(contact, index) in contacts" class="h50">
               <div class="contact">
                 <div class="container-circle-photo">
                   <img :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name">
@@ -94,6 +94,9 @@
       <!-- /Content left -->
 
 
+
+
+      
       <!-- Content right -->
       <div class="col-right">
 
@@ -103,10 +106,10 @@
           <!-- utente messaggiato -->
           <div class="user-messaged">
             <div class="container-circle-photo">
-              <img src="./img/avatar_1.jpg" alt="">
+              <img :src="`./img/avatar${contacts[indexActiveContact].avatar}.jpg`" :alt="contacts[indexActiveContact].name">
             </div>
             <div class="text">
-              <span>Michele</span><br>
+              <span>{{contacts[indexActiveContact].name}}</span><br>
               <span class="last-access">Ultimo accesso oggi alle 12:00</span>
             </div>
           </div>
@@ -125,17 +128,17 @@
         <div class="right-messages">
           
           <!-- Messaggio inviato -->
-          <div class="message sent">
-            <div class="message-text">messaggio inviato</div>
-            <div class="message-time">00/00/0000 00:00:00</div>
+          <div :class="message.status == 'sent' ? 'received' : 'sent'" v-for="(message, index) in contacts[indexActiveContact].messages" class="message">
+            <div class="message-text">{{message.message}}</div>
+            <div class="message-time">{{message.date}}</div>
           </div>
            <!-- /Messaggio inviato -->
 
             <!-- Messaggio ricevuto -->
-          <div class="message recived">
+          <!-- <div class="message recived">
             <div class="message-text">messaggio ricevuto</div>
             <div class="message-time">00/00/0000 00:00:00</div>
-          </div>
+          </div> -->
           <!-- /Messaggio ricevuto -->
 
         </div>

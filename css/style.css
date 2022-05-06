@@ -164,6 +164,10 @@ i{
 .contacts ul li{
   border-bottom: 1px solid #f9f4f4;
   padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
 }
 
 .contacts ul li img{
@@ -181,7 +185,7 @@ i{
 }
 
 .contacts ul li .clock{
-  font-size: .7rem;
+  font-size: .6rem;
   color: rgb(203, 197, 197);
 }
 /* /Left contacts */
@@ -250,7 +254,7 @@ i{
   background-color: #D5F9BA;
 }
 
-.right-messages .message.recived{
+.right-messages .message.received{
   background-color: white;
   float: left;
 }
