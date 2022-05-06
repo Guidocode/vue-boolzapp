@@ -127,12 +127,12 @@
         <!--  Right messages -->
         <div class="right-messages">
           
-          <!-- Messaggio inviato -->
-          <div :class="message.status == 'sent' ? 'received' : 'sent'" v-for="(message, index) in contacts[indexActiveContact].messages" class="message">
+          <!-- Messaggio inviato/ricevuto -->
+          <div v-for="(message, index) in contacts[indexActiveContact].messages" :class="message.status == 'sent' ? 'received' : 'sent'" class="message">
             <div class="message-text">{{message.message}}</div>
             <div class="message-time">{{message.date}}</div>
           </div>
-           <!-- /Messaggio inviato -->
+           <!-- /Messaggio inviato/ricevuto -->
 
             <!-- Messaggio ricevuto -->
           <!-- <div class="message recived">
@@ -148,7 +148,7 @@
         <!-- Right bottom -->
         <div class="right-bottom h60 flex-between-items-center">
           <i class="fa-solid fa-face-smile"></i>
-          <input type="text" placeholder="Scrivi un mesaggio">
+          <input v-model.trim="textNewMessage" @keyup.enter="sentNewMessage()" type="text" placeholder="Scrivi un mesaggio">
           <i class="fa-solid fa-microphone"></i>
         </div>
         <!-- /Right bottom -->

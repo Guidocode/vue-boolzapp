@@ -42,17 +42,40 @@ const app = new Vue ({
     activeContact(indice){
       this.indexActiveContact = indice;
       console.log(indice);
+    },
+
+    sentNewMessage(){
+      let mymessage = {
+        date: 'now',
+        message: this.textNewMessage,
+        status: 'sent'
+      }
+      console.log(mymessage);
+      this.contacts.push(mymessage);
+
+      console.log(this.contacts);
+
+      this.textNewMessage = '';
     }
   },
 
   data: {
 
     indexActiveContact: 0,
+    textNewMessage: '',
 
 
     myProfile: {
       name: 'Mark',
-      avatar: '_io'
+      avatar: '_io',
+      messages: []
+      // messages: {
+      //   date: '10/01/2020 15:30:55',
+      //   message: 'Hai portato a spasso il cane?',
+      //   status: 'sent'
+      // }
+        
+        
     },
 
     contacts: [
