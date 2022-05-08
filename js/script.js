@@ -48,15 +48,33 @@ const app = new Vue ({
       let mymessage = {
         date: 'now',
         message: this.textNewMessage,
-        status: 'sent'
+        status: 'received'
       }
       console.log(mymessage);
-      //correggere il push
-      this.contacts.push(mymessage);
 
-      console.log(this.contacts.messages);
+      this.contacts[this.indexActiveContact].messages.push(mymessage);
+
+      console.log(this.contacts[this.indexActiveContact].messages);
 
       this.textNewMessage = '';
+    },
+
+    answerOk(){
+      let answer = {
+        date: 'now',
+        message: 'ok',
+        status: 'sent'
+      }
+
+      this.contacts[this.indexActiveContact].messages.push(answer);
+    },
+
+    receivedAnswer(){
+      setTimeout(() => {
+        this.answerOk();
+      }, 1000)
+
+      clearTimeout(this.answerOk());
     },
 
     searchContact(){
@@ -73,6 +91,8 @@ const app = new Vue ({
       }
       // console.log(this.contacts.visible);
     }
+
+    
   },
 
   data: {
@@ -85,8 +105,7 @@ const app = new Vue ({
     myProfile: {
       name: 'Mark',
       avatar: '_io',
-      messages: []
-      // messages: {
+      // message: {
       //   date: '10/01/2020 15:30:55',
       //   message: 'Hai portato a spasso il cane?',
       //   status: 'sent'
