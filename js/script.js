@@ -41,7 +41,7 @@ const app = new Vue ({
 
     activeContact(indice){
       this.indexActiveContact = indice;
-      console.log(indice);
+      // console.log(indice);
     },
 
     sentNewMessage(){
@@ -51,11 +51,27 @@ const app = new Vue ({
         status: 'sent'
       }
       console.log(mymessage);
+      //correggere il push
       this.contacts.push(mymessage);
 
-      console.log(this.contacts);
+      console.log(this.contacts.messages);
 
       this.textNewMessage = '';
+    },
+
+    searchContact(){
+      // se il nome contatto NON include una delle lettere 
+      // che scrivo visible diventa false
+
+      const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; 
+
+      for (let index; index < alphabet.length; index++) {
+        if (!this.contactSearched.include(index)) {
+          this.contacts.visible = false;
+          
+        }
+      }
+      // console.log(this.contacts.visible);
     }
   },
 
@@ -63,6 +79,7 @@ const app = new Vue ({
 
     indexActiveContact: 0,
     textNewMessage: '',
+    contactSearched: '',
 
 
     myProfile: {

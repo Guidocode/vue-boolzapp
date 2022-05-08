@@ -62,8 +62,8 @@
 
         <!-- Search bar -->
         <div class="search-container">
-          <button><i class="fa-solid fa-magnifying-glass"></i></button>
-          <input type="text" value="" placeholder="Cerca o inizia una nuova chat">
+          <button @click="searchContact()"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input v-model="contactSearched" type="text" value="" placeholder="Cerca o inizia una nuova chat">
         </div>
         <!-- /Search bar -->
 
