@@ -170,6 +170,11 @@ i{
 
 }
 
+.contacts li.active{
+  border-bottom-color: transparent;
+  background-color: #E9EBEB;
+}
+
 .contacts ul li img{
   width: 100%;
 }

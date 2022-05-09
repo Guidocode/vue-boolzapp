@@ -45,36 +45,30 @@ const app = new Vue ({
     },
 
     sentNewMessage(){
-      let mymessage = {
+      const mymessage = {
         date: 'now',
         message: this.textNewMessage,
-        status: 'received'
+        status: 'sent'
       }
       console.log(mymessage);
 
       this.contacts[this.indexActiveContact].messages.push(mymessage);
 
-      console.log(this.contacts[this.indexActiveContact].messages);
+      setTimeout(() => {
+        this.answerOk()
+      }, 1000)
 
       this.textNewMessage = '';
     },
 
     answerOk(){
-      let answer = {
+      const answer = {
         date: 'now',
         message: 'ok',
-        status: 'sent'
+        status: 'received'
       }
 
       this.contacts[this.indexActiveContact].messages.push(answer);
-    },
-
-    receivedAnswer(){
-      setTimeout(() => {
-        this.answerOk();
-      }, 1000)
-
-      clearTimeout(this.answerOk());
     },
 
     searchContact(){

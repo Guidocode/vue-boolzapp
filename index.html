@@ -72,7 +72,9 @@
         <div class="contacts">
           <ul>
 
-            <li @click="activeContact(index)" v-for="(contact, index) in contacts" class="h50">
+            <li @click="activeContact(index)" 
+            v-for="(contact, index) in contacts" class="h50"
+            :class="{'active' : indexActiveContact === index}">
               <div class="contact">
                 <div class="container-circle-photo">
                   <img :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name">
@@ -129,7 +131,7 @@
           
           <!-- Messaggio inviato/ricevuto -->
           <div v-for="(message, index) in contacts[indexActiveContact].messages" 
-          :class="message.status == 'sent' ? 'received' : 'sent'" class="message">
+          :class="message.status" class="message">
             <div class="message-text">{{message.message}}</div>
             <div class="message-time">{{message.date}}</div>
           </div>
