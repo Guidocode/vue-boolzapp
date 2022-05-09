@@ -33,17 +33,25 @@ Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista
 dei contatti
 */
 
+// Estensioni DayJs
+dayjs.extend(window.dayjs_plugin_customParseFormat);
+dayjs.extend(window.dayjs_plugin_relativeTime);
+
+
+
 const app = new Vue ({
 
   el: '#app',
 
   methods: {
-
+    // Funzione che intercetta l'indice del contatto cliccato
     activeContact(indice){
       this.indexActiveContact = indice;
       // console.log(indice);
     },
 
+    // Funzione genera e invia messaggio e stabilisce il 
+    // tempo prima della risposta
     sentNewMessage(){
       const mymessage = {
         date: 'now',
@@ -61,6 +69,7 @@ const app = new Vue ({
       this.textNewMessage = '';
     },
 
+    // Funzione che genera la risposta automatica
     answerOk(){
       const answer = {
         date: 'now',
@@ -91,8 +100,12 @@ const app = new Vue ({
 
   data: {
 
+    // flag indice contatto attivo
     indexActiveContact: 0,
+
+    // flag testo nuovo messaggio
     textNewMessage: '',
+
     contactSearched: '',
 
 
