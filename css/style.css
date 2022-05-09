@@ -67,6 +67,13 @@ i{
   display: inline-block;
 }
 
+.d-none{
+  display: none;
+}
+.d-block{
+  display: block;
+}
+
 
 /* CONTENT */
 
@@ -93,6 +100,10 @@ i{
   width: 100%;
 }
 
+.left-top .myprofile span{
+  margin-left: 10px;
+}
+
 .left-top .icons i{
   margin-left: 10px;
   color: #B1B1B1;
@@ -112,6 +123,10 @@ i{
   justify-content: center;
   align-items: center;
   background-color: white;
+}
+
+.left-notifications p{
+  margin-left: 10px;
 }
 
 .left-notifications i{
@@ -179,6 +194,11 @@ i{
   width: 100%;
 }
 
+.contacts .text{
+  margin-left: 10px;
+  max-width: 70%;
+}
+
 .contacts ul li .last-message{
   font-size: .7rem;
   color :rgb(203, 197, 197)
@@ -187,6 +207,7 @@ i{
 .contacts ul li .contact{
   display: flex;
   align-items: flex-start;
+  max-width: 70%;
 }
 
 .contacts ul li .clock{
@@ -222,6 +243,10 @@ i{
 
 .right-top .container-circle-photo img{
   width: 100%;
+}
+
+.right-top .user-messaged .text{
+  margin-left: 10px;
 }
 
 .right-top .user-messaged .last-access{
@@ -271,6 +296,43 @@ i{
   font-size: .6rem;
   color: #B4B6B9;
 }
+
+.right-messages .chev-down{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  display: none;
+}
+
+.right-messages .message:hover .chev-down{
+  display: block;
+}
+
+.right-messages .chev-down i{
+  font-size: 12px;
+}
+
+.right-messages .dropdown-menu{
+  position: absolute;
+  top: 25px;
+  right: 0;
+  background-color: white;
+  border: 2px solid grey;
+  z-index: 999;
+  list-style: none;
+}
+
+.right-messages .dropdown-menu li{
+  padding: 5px 10px;
+  background-color: #f1ebeb;
+  cursor: pointer;
+}
+
+.right-messages .dropdown-menu li:hover{
+  background-color: #d5d8dbd2;
+}
+
+
 /* /right messages */
 
 

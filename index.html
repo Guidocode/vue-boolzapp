@@ -84,19 +84,19 @@
         <div class="contacts">
           <ul>
 
-            <li @click="activeContact(index)" 
-            v-for="(contact, index) in contacts" class="h50"
-            :class="{'active' : indexActiveContact === index}">
+            <li v-for="(contact, index) in contacts" 
+            @click="activeContact(index)" 
+            :class="{'active' : indexActiveContact === index}" class="h50"> 
               <div class="contact">
                 <div class="container-circle-photo">
                   <img :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                 </div>
                 <div class="text">
                   <span>{{contact.name}}</span><br>
-                  <span class="last-message">Ultimo messaggio inviato</span>
+                  <span class="last-message">{{getLastMessage(contact)}}</span>
                 </div>
               </div>
-              <span class="clock">12:00</span>
+              <span class="clock">{{getLastDate(contact)}}</span>
             </li>
             
 
@@ -143,9 +143,15 @@
           
           <!-- Messaggio inviato/ricevuto -->
           <div v-for="(message, index) in contacts[indexActiveContact].messages" 
-          :class="message.status" class="message">
+           :class="message.status" class="message">
             <div class="message-text">{{message.message}}</div>
             <div class="message-time">{{message.date}}</div>
+            <div @click="cambiaIndiceMessaggio(index)" 
+            class="chev-down"><i class="fa-solid fa-chevron-down"></i></div>
+            <ul :class="indexActiveMessage === index ? 'd-block' : 'd-none'" class="dropdown-menu">
+              <li>Inoltra</li>
+              <li @click="deleteMessage(index)">Elimina messaggio</li>
+            </ul>
           </div>
            <!-- /Messaggio inviato/ricevuto -->
 

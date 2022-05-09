@@ -47,6 +47,8 @@ const app = new Vue ({
     // Funzione che intercetta l'indice del contatto cliccato
     activeContact(indice){
       this.indexActiveContact = indice;
+
+      this.indexActiveMessage = -1;
       // console.log(indice);
     },
 
@@ -93,8 +95,36 @@ const app = new Vue ({
         }
       }
       // console.log(this.contacts.visible);
-    }
+    },
 
+    // Funzione che intercetta l'utimo messaggio nella chat 
+    // per visualizzarlo nella lista contatti
+    getLastMessage(contatto){
+      return contatto.messages[contatto.messages.length - 1].message;
+    },
+
+    // Funzione che intercetta la data dell'utimo messaggio nella chat 
+    // per visualizzarla nella lista contatti
+    getLastDate(contatto){
+      return contatto.messages[contatto.messages.length - 1].date;
+    },
+
+    // Funzione per nascondere il dropdown del messaggio
+    cambiaIndiceMessaggio(indice){
+      
+      this.indexActiveMessage = indice;
+    },
+
+    // Funzione che cancella il messaggio selezionato
+    deleteMessage(indice){
+
+      // if(indice == this.contacts[this.indexActiveContact].messages.length -1) this.indexActiveContact--;
+
+      if(confirm('Sei sicuro di voler cancellare questo messaggio?')){
+        this.contacts[this.indexActiveContact].messages.splice(indice, 1);
+      }
+
+    }
     
   },
 
@@ -107,6 +137,9 @@ const app = new Vue ({
     textNewMessage: '',
 
     contactSearched: '',
+
+    // booleana display none/block
+    indexActiveMessage: -1,
 
 
     myProfile: {
