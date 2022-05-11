@@ -48,15 +48,16 @@ const app = new Vue ({
     activeContact(indice){
       this.indexActiveContact = indice;
 
-      this.indexActiveMessage = -1;
       // console.log(indice);
     },
+
 
     // Funzione genera e invia messaggio e stabilisce il 
     // tempo prima della risposta
     sentNewMessage(){
       const mymessage = {
-        date: 'now',
+        // Data presa dalla CDN DayJs con i plugin
+        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
         message: this.textNewMessage,
         status: 'sent'
       }
@@ -71,10 +72,12 @@ const app = new Vue ({
       this.textNewMessage = '';
     },
 
+
     // Funzione che genera la risposta automatica
     answerOk(){
       const answer = {
-        date: 'now',
+        // Data presa dalla CDN DayJs con i plugin
+        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
         message: 'ok',
         status: 'received'
       }
@@ -82,6 +85,8 @@ const app = new Vue ({
       this.contacts[this.indexActiveContact].messages.push(answer);
     },
 
+
+    // Funzione ricerca contatti
     searchContact(){
       
       this.contacts.forEach(contact => {
@@ -89,6 +94,7 @@ const app = new Vue ({
 
       });
     },
+
 
     // Funzione che intercetta l'utimo messaggio nella chat 
     // per visualizzarlo nella lista contatti
@@ -103,6 +109,7 @@ const app = new Vue ({
       return `Chatta con ${contact.name}!`;
     },
 
+
     // Funzione che intercetta la data dell'utimo messaggio nella chat 
     // per visualizzarla nella lista contatti
     getLastDate(indice){
@@ -116,21 +123,24 @@ const app = new Vue ({
       return '';
     },
 
-    // Funzione per nascondere il dropdown del messaggio
-    cambiaIndiceMessaggio(indice){
 
-      this.indexActiveMessage = indice;
+    // Funzione per vedere/nascondere il dropdown del messaggio
+    toggleDropdown(message){
+
+      if(this.messageClicked === message){
+        this.messageClicked = {};
+      }else{
+        this.messageClicked = message;
+      }
     },
+
 
     // Funzione che cancella il messaggio selezionato
     deleteMessage(indice){
 
-      // if(indice == this.contacts[this.indexActiveContact].messages.length -1) this.indexActiveContact--;
-
       if(confirm('Sei sicuro di voler cancellare questo messaggio?')){
         this.contacts[this.indexActiveContact].messages.splice(indice, 1);
       }
-
     }
     
   },
@@ -143,10 +153,11 @@ const app = new Vue ({
     // flag testo nuovo messaggio
     textNewMessage: '',
 
+    // flag contatto cercato su input
     contactSearched: '',
 
-    // booleana display none/block
-    indexActiveMessage: -1,
+    // flag messaggio attivo
+    messageClicked: {},
 
 
     myProfile: {
@@ -157,8 +168,6 @@ const app = new Vue ({
       //   message: 'Hai portato a spasso il cane?',
       //   status: 'sent'
       // }
-        
-        
     },
 
     contacts: [

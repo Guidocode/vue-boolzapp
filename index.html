@@ -86,6 +86,9 @@
         <div class="contacts">
           <ul>
 
+            <!-- Vedo il contato solo se contact.visible === true
+            Una funzione cambia il valore di visible in false quando 
+            le lettere della ricerca non corrispondono al nome del contatto -->
             <li v-for="(contact, index) in contacts" 
             v-if="contact.visible"
             @click="activeContact(index)" 
@@ -145,16 +148,27 @@
         <div class="right-messages">
           
           <!-- Messaggio inviato/ricevuto -->
+          <!-- Quando con il mouse vado fuori dal messaggio il dropdown si nasconde -->
           <div v-for="(message, index) in contacts[indexActiveContact].messages" 
-           :class="message.status" class="message">
+          @mouseleave="messageClicked = {}"
+          :class="message.status" class="message">
             <div class="message-text">{{message.message}}</div>
             <div class="message-time">{{message.date}}</div>
-            <div @click="cambiaIndiceMessaggio(index)" 
-            class="chev-down"><i class="fa-solid fa-chevron-down"></i></div>
-            <ul :class="indexActiveMessage === index ? 'd-block' : 'd-none'" class="dropdown-menu">
+
+            <!-- Chevron per dropdown -->
+            <div @click="toggleDropdown(message)" 
+            class="chev-down">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <!-- /Chevron per dropdown -->
+
+            <!-- Dropdown messaggio -->
+            <ul v-if="messageClicked === message" class="dropdown-menu">
               <li>Inoltra</li>
               <li @click="deleteMessage(index)">Elimina messaggio</li>
             </ul>
+            <!-- /Dropdown messaggio -->
+
           </div>
            <!-- /Messaggio inviato/ricevuto -->
 
@@ -172,7 +186,8 @@
         <!-- Right bottom -->
         <div class="right-bottom h60 flex-between-items-center">
           <i class="fa-solid fa-face-smile"></i>
-          <input v-model.trim="textNewMessage" @keyup.enter="sentNewMessage(), receivedAnswer()" type="text" placeholder="Scrivi un mesaggio">
+          <input v-model.trim="textNewMessage" 
+          @keyup.enter="sentNewMessage()" type="text" placeholder="Scrivi un mesaggio">
           <i class="fa-solid fa-microphone"></i>
         </div>
         <!-- /Right bottom -->
