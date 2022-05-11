@@ -74,8 +74,8 @@
 
         <!-- Search bar -->
         <div class="search-container">
-          <button @click="searchContact()"><i class="fa-solid fa-magnifying-glass"></i></button>
-          <input v-model="contactSearched" type="text" value="" placeholder="Cerca o inizia una nuova chat">
+          <button @keyup="searchContact()"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input v-model.trim="contactSearched" type="text" value="" placeholder="Cerca o inizia una nuova chat">
         </div>
         <!-- /Search bar -->
 
@@ -93,10 +93,10 @@
                 </div>
                 <div class="text">
                   <span>{{contact.name}}</span><br>
-                  <span class="last-message">{{getLastMessage(contact)}}</span>
+                  <span class="last-message">{{getLastMessage(index)}}</span>
                 </div>
               </div>
-              <span class="clock">{{getLastDate(contact)}}</span>
+              <span class="clock">{{getLastDate(index)}}</span>
             </li>
             
 

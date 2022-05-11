@@ -82,36 +82,48 @@ const app = new Vue ({
       this.contacts[this.indexActiveContact].messages.push(answer);
     },
 
-    searchContact(){
+    searchContact(contact){
       // se il nome contatto NON include una delle lettere 
       // che scrivo visible diventa false
 
-      const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; 
+      if (!this.contact.name.include(this.contactSearched)) {
 
-      for (let index; index < alphabet.length; index++) {
-        if (!this.contactSearched.include(index)) {
-          this.contacts.visible = false;
-          
-        }
+        this.contacts.visible = false;
       }
+
+      
       // console.log(this.contacts.visible);
     },
 
     // Funzione che intercetta l'utimo messaggio nella chat 
     // per visualizzarlo nella lista contatti
-    getLastMessage(contatto){
-      return contatto.messages[contatto.messages.length - 1].message;
+    getLastMessage(indice){
+
+      const contact = this.contacts[indice];
+      const messages = contact.messages;
+      if(messages.length > 0){
+          const lastMessage = messages[messages.length - 1];
+          return lastMessage.message;
+      }
+      return `Chatta con ${contact.name}!`;
     },
 
     // Funzione che intercetta la data dell'utimo messaggio nella chat 
     // per visualizzarla nella lista contatti
-    getLastDate(contatto){
-      return contatto.messages[contatto.messages.length - 1].date;
+    getLastDate(indice){
+      
+      const contact = this.contacts[indice];
+      const messages = contact.messages;
+      if(messages.length > 0){
+          const lastMessage = messages[messages.length - 1];
+          return lastMessage.date;
+      }
+      return '';
     },
 
     // Funzione per nascondere il dropdown del messaggio
     cambiaIndiceMessaggio(indice){
-      
+
       this.indexActiveMessage = indice;
     },
 
