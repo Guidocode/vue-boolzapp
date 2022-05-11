@@ -74,8 +74,10 @@
 
         <!-- Search bar -->
         <div class="search-container">
-          <button @keyup="searchContact()"><i class="fa-solid fa-magnifying-glass"></i></button>
-          <input v-model.trim="contactSearched" type="text" value="" placeholder="Cerca o inizia una nuova chat">
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input v-model.trim="contactSearched" 
+          @keyup="searchContact()"
+          type="text" value="" placeholder="Cerca o inizia una nuova chat">
         </div>
         <!-- /Search bar -->
 
@@ -85,6 +87,7 @@
           <ul>
 
             <li v-for="(contact, index) in contacts" 
+            v-if="contact.visible"
             @click="activeContact(index)" 
             :class="{'active' : indexActiveContact === index}" class="h50"> 
               <div class="contact">

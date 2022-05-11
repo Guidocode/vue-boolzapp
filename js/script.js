@@ -82,17 +82,12 @@ const app = new Vue ({
       this.contacts[this.indexActiveContact].messages.push(answer);
     },
 
-    searchContact(contact){
-      // se il nome contatto NON include una delle lettere 
-      // che scrivo visible diventa false
-
-      if (!this.contact.name.include(this.contactSearched)) {
-
-        this.contacts.visible = false;
-      }
-
+    searchContact(){
       
-      // console.log(this.contacts.visible);
+      this.contacts.forEach(contact => {
+        contact.visible = contact.name.toLowerCase().includes(this.contactSearched.toLowerCase())
+
+      });
     },
 
     // Funzione che intercetta l'utimo messaggio nella chat 
